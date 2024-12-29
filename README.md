@@ -1,16 +1,32 @@
-### Các bước cần làm để chạy dự án NestJS
+## Backend JobHunter
 
-#### 1. Cài đặt thư viện với câu lệnh: npm i
-#### 2. Chạy dự án với câu lệnh: npm run dev
+### I. Giới thiệu dự án
+1. Về dự án:
+   - Dự án lấy ý tưởng từ trang website ITViec,
+   - Công nghệ sử dụng: React(TypeScript) + NestJS
+   
+2. Môi trường NodeJS
+   - Môi trường chạy dự án là NodeJS version 20.14.0
+   
+3. Cách chạy dự án:
+   - Clone dự án:
+   - Cài đặt thư viện: npm install (npm i)
+   - Chạy dự án
 
+====================================================================
 
-=================
+### II. Về tác giả
+👋👋 Chào bạn, tôi là Kirito Nguyễn!
 
-Tác giả: Kirito Nguyễn
+👀 Tôi đam mê lập trình, đặc biệt là trong lĩnh vực phát triển website và ứng dụng di động.
 
-Mọi thông tin về Kirito Nguyễn, các bạn có thể tìm kiếm tại đây:
+🌱 Hiện tại, tôi đang theo học ngành Công nghệ Thông tin và tập trung vào việc phát triển website và ứng dụng di động.
 
-Website chính thức: https://minhducnguyen.io.vn/
+💞️ Tôi luôn mong muốn tìm kiếm cơ hội hợp tác trong các dự án sáng tạo liên quan đến website và ứng dụng di động.
 
-Facebook “Nguyễn Minh Đức” : https://www.facebook.com/kirito.nguyen.dev
+📫 Bạn có thể liên hệ với tôi qua website: https://minhducnguyen.io.vn
+
+😄 Ngoài lập trình, tôi cũng rất thích ca hát và chơi nhạc cụ – đó là cách tôi thư giãn và sáng tạo!
+
+⚡ Sở thích của tôi là viết mã ngắn gọn, dễ hiểu và hiệu quả – tối giản nhưng mạnh mẽ.
 
