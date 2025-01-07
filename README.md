@@ -2,7 +2,7 @@
 
 ### I. Giới thiệu dự án
 1. Về dự án:
-   - Dự án lấy ý tưởng từ trang website ITViec,
+   - Dự án được lấy cảm hứng từ trang web ITViec, với mục tiêu tạo ra một nền tảng tìm kiếm việc làm hiện đại và dễ sử dụng.
    - Công nghệ sử dụng: React(TypeScript) + NestJS
    
 2. Môi trường NodeJS
@@ -10,8 +10,9 @@
    
 3. Cách chạy dự án:
    - Clone dự án:
-   - Cài đặt thư viện: npm install (npm i)
-   - Chạy dự án
+   - Cài đặt thư viện: npm install (npm i).
+   - Update file .env (nếu cần thiết).
+   - Chạy dự án.
 
 ====================================================================
 

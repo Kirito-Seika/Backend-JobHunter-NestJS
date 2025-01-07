@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+section {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+ul {
+    line-height: 1.6rem;
+}
+
+.project-info {
+    margin-bottom: 30px;
+}
+
+.author-info {
+    background-color: #e8f5e9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.author-info h3 {
+    color: #4CAF50;
+}
+
+.contact-info {
+    color: #1e88e5;
+    text-decoration: none;
+}
+
+.footer {
+    background-color: #7c7c7c;
+    color: white;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
