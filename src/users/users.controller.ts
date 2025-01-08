@@ -15,6 +15,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  //create user
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
@@ -25,14 +26,16 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  //get user by id
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+  //update user
+  @Patch()
+  update(@Body() updateUserDto: UpdateUserDto) {
+    return this.usersService.update(updateUserDto);
   }
 
   @Delete(':id')
