@@ -6,7 +6,7 @@ import { JwtService } from '@nestjs/jwt';
 export class AuthService {
   constructor(
     private usersService: UsersService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
   ) {}
 
   //username/pass là 2 tham số thư viện passport trả về
@@ -22,7 +22,14 @@ export class AuthService {
   }
 
   async login(user: any) {
-    const payload = { username: user.email, sub: user._id };
+    const payload = {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      age: user.age,
+      address: user.address,
+    };
     return {
       access_token: this.jwtService.sign(payload),
     };
