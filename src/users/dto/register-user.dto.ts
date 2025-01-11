@@ -1,30 +1,14 @@
-import {
-  IsNotEmpty,
-  IsNotEmptyObject,
-  IsObject,
-  Validate,
-  ValidateNested,
-} from 'class-validator';
+import { IsNotEmpty, Validate } from 'class-validator';
 import {
   IsAddressValidConstraint,
   IsAgeValidConstraint,
-  IsEmailValidConstraint,
-  IsGenderValidConstraint,
+  IsEmailValidConstraint, IsGenderValidConstraint,
   IsNameValidConstraint,
   IsPasswordValidConstraint,
   IsPhoneValidConstraint,
 } from 'src/users/validator/validate.user';
-import { Type } from 'class-transformer';
 
-class Company {
-  @IsNotEmpty()
-  _id: string;
-
-  @IsNotEmpty()
-  name: string;
-}
-
-export class CreateUserDto {
+export class RegisterUserDto {
   @Validate(IsNameValidConstraint)
   name: string;
 
@@ -45,13 +29,4 @@ export class CreateUserDto {
 
   @Validate(IsAddressValidConstraint)
   address: string;
-
-  @IsNotEmpty({ message: 'Role không được để trống', })
-  role: string;
-
-  @IsNotEmptyObject()
-  @IsObject()
-  @ValidateNested()
-  @Type(() => Company)
-  company: Company;
 }

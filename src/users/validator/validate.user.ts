@@ -180,3 +180,51 @@ export class IsAgeValidConstraint implements ValidatorConstraintInterface {
     return '';
   }
 }
+
+//Validate Gender
+@ValidatorConstraint({ async: false })
+export class IsGenderValidConstraint implements ValidatorConstraintInterface {
+  validate(value: any, args: ValidationArguments) {
+    const validGenders = ['male', 'female', 'other'];
+    if (value === null || value === undefined || value === '') {
+      return false;
+    }
+    return validGenders.includes(value.toLowerCase());
+  }
+
+  defaultMessage(args: ValidationArguments) {
+    const value = args.value;
+    if (value === null || value === undefined || value === '') {
+      return 'Giới tính không được để trống.';
+    }
+    return 'Giới tính không hợp lệ. Hãy chọn giữa "male", "female" hoặc "other".';
+  }
+}
+
+@ValidatorConstraint({ async: false })
+export class IsAddressValidConstraint implements ValidatorConstraintInterface {
+  validate(value: any, args: ValidationArguments) {
+    if (value === null || value === undefined || value === '') {
+      return false;
+    }
+    if (value.length < 10 || value.length > 255) {
+      return false;
+    }
+    const addressRegex = /^[a-zA-Z0-9\s,.-]+$/;
+    return addressRegex.test(value);
+  }
+
+  defaultMessage(args: ValidationArguments) {
+    const value = args.value;
+    if (value === null || value === undefined || value === '') {
+      return 'Địa chỉ không được để trống.';
+    }
+    if (value.length < 10) {
+      return 'Địa chỉ phải có ít nhất 10 ký tự.';
+    }
+    if (value.length > 255) {
+      return 'Địa chỉ không được dài quá 255 ký tự.';
+    }
+    return 'Địa chỉ chỉ có thể chứa chữ cái, số và các ký tự đặc biệt như dấu phẩy, gạch nối, dấu chấm.';
+  }
+}
