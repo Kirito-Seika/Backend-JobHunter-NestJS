@@ -11,7 +11,7 @@ import {
 import { CompaniesService } from 'src/companies/companies.service';
 import { CreateCompanyDto } from 'src/companies/dto/create-company.dto';
 import { UpdateCompanyDto } from 'src/companies/dto/update-company.dto';
-import { User } from 'src/decorator/customize';
+import { ResponseMessage, User } from 'src/decorator/customize';
 import { IUser } from 'src/users/types/user.interface';
 
 @Controller('companies')
@@ -24,6 +24,7 @@ export class CompaniesController {
   }
 
   @Get()
+  @ResponseMessage("Fetch List Company with Paginate")
   findAll(
     @Query('page') currentPage: string,
     @Query('limit') limit: string,
@@ -33,11 +34,13 @@ export class CompaniesController {
   }
 
   @Get(':id')
+  @ResponseMessage("Fetch Company By Id")
   findOne(@Param('id') id: string) {
     return this.companiesService.findOne(+id);
   }
 
   @Patch(':id')
+  @ResponseMessage("Update Company")
   update(
     @Param('id') id: string,
     @Body() updateCompanyDto: UpdateCompanyDto,
@@ -47,6 +50,7 @@ export class CompaniesController {
   }
 
   @Delete(':id')
+  @ResponseMessage("Delete Company")
   remove(@Param('id') id: string, @User() user: IUser) {
     return this.companiesService.remove(id, user);
   }
