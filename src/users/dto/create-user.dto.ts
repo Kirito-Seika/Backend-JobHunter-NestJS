@@ -5,7 +5,7 @@ import {
   IsNameValidConstraint,
   IsPasswordValidConstraint,
   IsPhoneValidConstraint,
-} from 'src/users/validator/validate.custom';
+} from 'src/users/validator/validate.user';
 
 export class CreateUserDto {
   @Validate(IsNameValidConstraint)
