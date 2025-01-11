@@ -17,6 +17,7 @@ export class AppController {
   @Public()
   @Get()
   @Render('home')
-  getHello() {}
-
+  getHello() {
+    return this.appService.getHello()
+  }
 }
