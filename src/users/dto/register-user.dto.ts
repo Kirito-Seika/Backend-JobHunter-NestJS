@@ -1,4 +1,4 @@
-import { IsNotEmpty, Validate } from 'class-validator';
+import { Validate } from 'class-validator';
 import {
   IsAddressValidConstraint,
   IsAgeValidConstraint,

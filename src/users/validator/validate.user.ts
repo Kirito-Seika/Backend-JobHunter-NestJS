@@ -207,7 +207,7 @@ export class IsAddressValidConstraint implements ValidatorConstraintInterface {
     if (value === null || value === undefined || value === '') {
       return false;
     }
-    if (value.length < 10 || value.length > 255) {
+    if (value.length < 6 || value.length > 255) {
       return false;
     }
     const addressRegex = /^[a-zA-Z0-9\s,.-]+$/;

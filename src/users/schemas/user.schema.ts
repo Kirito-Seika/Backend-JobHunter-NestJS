@@ -32,7 +32,7 @@ export class User {
   @Prop({ type: String })
   refreshToken: string;
 
-  @Prop({ type: Object, required: true })
+  @Prop({ type: Object})
   company: {
     _id: mongoose.Schema.Types.ObjectId;
     name: string;
