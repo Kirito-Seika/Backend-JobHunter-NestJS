@@ -142,7 +142,7 @@ export class UsersService {
     );
   }
 
-  async remove(id: string,user: IUser) {
+  async remove(id: string, user: IUser) {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return 'Not Found User';
     }
@@ -151,9 +151,14 @@ export class UsersService {
       {
         deletedBy: {
           _id: user._id,
-          email: user.email
-        }
-      })
+          email: user.email,
+        },
+      },
+    );
     return this.userModel.softDelete({ _id: id });
+  }
+
+  async updateUserToken(refreshToken: string, _id: string) {
+    await this.userModel.updateOne({ _id }, { refreshToken });
   }
 }

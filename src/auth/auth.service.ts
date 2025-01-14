@@ -2,8 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { IUser } from 'src/users/types/user.interface';
-import { RegisterUserDto } from '../users/dto/register-user.dto';
+import { RegisterUserDto } from 'src/users/dto/register-user.dto';
 import { ConfigService } from '@nestjs/config';
+import { Response } from 'express';
 import ms from 'ms';
 
 @Injectable()
@@ -26,30 +27,41 @@ export class AuthService {
     return null;
   }
 
-  async login(user: IUser) {
+  async login(user: IUser, response: Response) {
+    const { _id, name, email, phone, age, gender, address, role } = user;
     const payload = {
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      phone: user.phone,
-      age: user.age,
-      gender: user.gender,
-      address: user.address,
-      role: user.role,
+      _id,
+      name,
+      email,
+      phone,
+      age,
+      gender,
+      address,
+      role,
     };
+
     const refresh_token = this.refreshToken(payload);
+
+    //Update User Token
+    await this.usersService.updateUserToken(refresh_token, _id);
+
+    //Set Cookie
+    response.cookie('refresh_token', refresh_token, {
+      httpOnly: true,
+      maxAge: ms(this.configService.get<string>('JWT_REFRESH_EXPIRE'))
+    });
+
     return {
       access_token: this.jwtService.sign(payload),
-      refresh_token,
       user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-        age: user.age,
-        gender: user.gender,
-        address: user.address,
-        role: user.role,
+        _id,
+        name,
+        email,
+        phone,
+        age,
+        gender,
+        address,
+        role,
       },
     };
   }
@@ -65,7 +77,8 @@ export class AuthService {
   refreshToken = (payload: any) => {
     return this.jwtService.sign(payload, {
       secret: this.configService.get<string>('JWT_REFRESH_TOKEN_SECRET'),
-      expiresIn: ms(this.configService.get<string>('JWT_REFRESH_EXPIRE'))/1000,
+      expiresIn:
+        ms(this.configService.get<string>('JWT_REFRESH_EXPIRE')) / 1000,
     });
   };
 }
