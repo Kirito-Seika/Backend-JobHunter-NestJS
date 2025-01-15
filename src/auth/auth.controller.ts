@@ -11,7 +11,7 @@ import { AuthService } from 'src/auth/auth.service';
 import { Public, ResponseMessage, User } from 'src/decorator/customize';
 import { LocalAuthGuard } from 'src/auth/local-auth.guard';
 import { RegisterUserDto } from 'src/users/dto/register-user.dto';
-import { Response } from 'express';
+import { Response, Request } from 'express';
 import { IUser } from 'src/users/types/user.interface';
 
 @Controller('auth')
@@ -39,5 +39,13 @@ export class AuthController {
   @Get('/account')
   handleGetAccount(@User() user: IUser) {
     return { user };
+  }
+
+  @Public()
+  @ResponseMessage('Get User By Refresh Token')
+  @Get('/refresh')
+  handleRefreshToken(@Req() request: Request) {
+    const refreshToken = request.cookies['refresh_token'];
+    return this.authService.processNewToken(refreshToken);
   }
 }

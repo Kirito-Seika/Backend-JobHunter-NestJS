@@ -52,8 +52,12 @@ ul {
     color: white;
     text-align: center;
     position: fixed;
-    width: 100%;
     bottom: 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .footer a {
