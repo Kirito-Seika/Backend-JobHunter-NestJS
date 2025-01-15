@@ -18,10 +18,10 @@ export class UsersService {
     private userModel: SoftDeleteModel<UserDocument>,
   ) {}
 
-  hashPassword(password: string) {
+  hashPassword = (password: string) => {
     const salt = genSaltSync(10);
     return hashSync(password, salt);
-  }
+  };
 
   async create(createUserDto: CreateUserDto, @User() user: IUser) {
     const {
@@ -114,23 +114,23 @@ export class UsersService {
     };
   }
 
-  async findOne(id: string) {
+  findOne = (id: string) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return 'Not Found User';
     }
-    return await this.userModel.findOne({ _id: id }).select('-password');
-  }
+    return this.userModel.findOne({ _id: id }).select('-password');
+  };
 
-  findOneByUsername(username: string) {
+  findOneByUsername = (username: string) => {
     return this.userModel.findOne({ email: username });
-  }
+  };
 
-  isValidPassword(password: string, hash: string) {
+  isValidPassword = (password: string, hash: string) => {
     return compareSync(password, hash);
-  }
+  };
 
-  async update(updateUserDto: UpdateUserDto, user: IUser) {
-    return await this.userModel.updateOne(
+  update = (updateUserDto: UpdateUserDto, user: IUser) => {
+    return this.userModel.updateOne(
       { _id: updateUserDto._id },
       {
         ...updateUserDto,
@@ -140,9 +140,9 @@ export class UsersService {
         },
       },
     );
-  }
+  };
 
-  async remove(id: string, user: IUser) {
+  remove = async (id: string, user: IUser) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return 'Not Found User';
     }
@@ -156,9 +156,13 @@ export class UsersService {
       },
     );
     return this.userModel.softDelete({ _id: id });
-  }
+  };
 
-  async updateUserToken(refreshToken: string, _id: string) {
-    await this.userModel.updateOne({ _id }, { refreshToken });
-  }
+  updateUserToken = (refreshToken: string, _id: string) => {
+    return this.userModel.updateOne({ _id }, { refreshToken });
+  };
+
+  findUserByToken = (refreshToken: string) => {
+    return this.userModel.findOne({ refreshToken });
+  };
 }
