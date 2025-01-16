@@ -139,7 +139,7 @@ export class AuthService {
       }
     } catch (err) {
       throw new BadRequestException(
-        'Refresh Token không hợp lệ hoặc hết hạn. Vui lòng đăng nhập lại!',
+        'Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại!',
       );
     }
   };
