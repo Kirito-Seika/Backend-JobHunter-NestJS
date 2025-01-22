@@ -16,7 +16,7 @@ import { IUser } from 'src/users/types/user.interface';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   //login
   @Public()
