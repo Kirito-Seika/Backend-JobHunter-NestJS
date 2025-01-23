@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
-import { AppController } from 'src/app.controller';
-import { AppService } from 'src/app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AppController } from 'src/app.controller';
+import { AppService } from 'src/app.service';
 import { UsersModule } from 'src/users/users.module';
 import { AuthModule } from 'src/auth/auth.module';
+import { CompaniesModule } from 'src/companies/companies.module';
+import { JobsModule } from 'src/jobs/jobs.module';
+import { FilesModule } from 'src/files/files.module';
+import { ResumesModule } from 'src/resumes/resumes.module';
 import { softDeletePlugin } from 'soft-delete-plugin-mongoose';
-import { CompaniesModule } from './companies/companies.module';
-import { JobsModule } from './jobs/jobs.module';
-import { FilesModule } from './files/files.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { FilesModule } from './files/files.module';
     CompaniesModule,
     JobsModule,
     FilesModule,
+    ResumesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

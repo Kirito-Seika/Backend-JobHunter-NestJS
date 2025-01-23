@@ -11,10 +11,9 @@ import {
   ParseFilePipeBuilder,
   HttpStatus,
 } from '@nestjs/common';
-import { FilesService } from 'src/files/files.service';
-import { CreateFileDto } from './dto/create-file.dto';
-import { UpdateFileDto } from 'src/files/dto/update-file.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { FilesService } from 'src/files/files.service';
+import { UpdateFileDto } from 'src/files/dto/update-file.dto';
 import { Public, ResponseMessage } from 'src/decorator/customize';
 
 @Controller('files')

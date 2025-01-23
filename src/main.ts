@@ -1,11 +1,11 @@
 import { NestFactory, Reflector } from '@nestjs/core';
-import { AppModule } from 'src/app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { join } from 'path';
-import { ConfigService } from '@nestjs/config';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { TransformInterceptor } from 'src/core/transform.interceptor';
+import { AppModule } from 'src/app.module';
+import { join } from 'path';
 import cookieParser from 'cookie-parser';
 
 const bootstrap = async () => {
@@ -29,7 +29,7 @@ const bootstrap = async () => {
     origin: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
-    credentials: true
+    credentials: true,
   });
 
   //config version

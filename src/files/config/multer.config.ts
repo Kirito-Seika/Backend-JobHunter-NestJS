@@ -3,9 +3,9 @@ import {
   MulterModuleOptions,
   MulterOptionsFactory,
 } from '@nestjs/platform-express';
-import fs from 'fs';
 import { diskStorage } from 'multer';
 import path, { join } from 'path';
+import fs from 'fs';
 
 @Injectable()
 export class MulterConfigService implements MulterOptionsFactory {

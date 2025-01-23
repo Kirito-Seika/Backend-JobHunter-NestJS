@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import { CreateJobDto } from 'src/jobs/dto/create-job.dto';
 import { UpdateJobDto } from 'src/jobs/dto/update-job.dto';
-import { InjectModel } from '@nestjs/mongoose';
 import { Job, JobDocument } from 'src/jobs/schemas/job.schema';
-import { SoftDeleteModel } from 'soft-delete-plugin-mongoose';
 import { IUser } from 'src/users/types/user.interface';
-import aqp from 'api-query-params';
+import { SoftDeleteModel } from 'soft-delete-plugin-mongoose';
 import mongoose from 'mongoose';
+import aqp from 'api-query-params';
 
 @Injectable()
 export class JobsService {

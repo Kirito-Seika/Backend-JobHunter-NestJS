@@ -1,11 +1,11 @@
+import { JwtService } from '@nestjs/jwt';
+import { ConfigService } from '@nestjs/config';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
-import { JwtService } from '@nestjs/jwt';
 import { IUser } from 'src/users/types/user.interface';
 import { RegisterUserDto } from 'src/users/dto/register-user.dto';
-import { ConfigService } from '@nestjs/config';
-import { Response } from 'express';
 import ms from 'ms';
+import { Response } from 'express';
 
 @Injectable()
 export class AuthService {
