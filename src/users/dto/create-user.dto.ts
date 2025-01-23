@@ -1,4 +1,5 @@
 import {
+  IsMongoId,
   IsNotEmpty,
   IsNotEmptyObject,
   IsObject,
@@ -15,6 +16,7 @@ import {
   IsPhoneValidConstraint,
 } from 'src/users/validator/validate.user';
 import { Type } from 'class-transformer';
+import mongoose from 'mongoose';
 
 class Company {
   @IsNotEmpty()
@@ -47,7 +49,8 @@ export class CreateUserDto {
   address: string;
 
   @IsNotEmpty({ message: 'Role không được để trống', })
-  role: string;
+  @IsMongoId({ message: 'Role có định dạng là mongo id', })
+  role: mongoose.Schema.Types.ObjectId;
 
   @IsNotEmptyObject()
   @IsObject()

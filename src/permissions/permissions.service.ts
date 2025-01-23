@@ -85,12 +85,7 @@ export class PermissionsService {
       throw new BadRequestException('not found permission');
     }
     const { module, method, apiPath, name } = updatePermissionDto;
-    const isExist = await this.permissionModel.findOne({ apiPath, method });
-    if (isExist) {
-      throw new BadRequestException(
-        `Permission với apiPath="${apiPath}" , method="${method}" đã tồn tại!`,
-      );
-    }
+
     return this.permissionModel.updateOne(
       { _id },
       {
