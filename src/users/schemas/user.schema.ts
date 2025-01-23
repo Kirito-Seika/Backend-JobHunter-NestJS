@@ -6,25 +6,25 @@ export type UserDocument = HydratedDocument<User>;
 
 @Schema({ timestamps: true })
 export class User {
-  @Prop({ type: String, required: true })
+  @Prop({ type: String })
   name: string;
 
-  @Prop({ type: String, required: true })
+  @Prop({ type: String })
   email: string;
 
-  @Prop({ type: String, required: true })
+  @Prop({ type: String })
   password: string;
 
-  @Prop({ type: Number, required: true })
+  @Prop({ type: Number })
   age: number;
 
-  @Prop({ type: String, required: true })
+  @Prop({ type: String })
   gender: string;
 
-  @Prop({ type: Number, required: true })
+  @Prop({ type: Number })
   phone: number;
 
-  @Prop({ type: String, required: true })
+  @Prop({ type: String })
   address: string;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: Role.name })
@@ -33,7 +33,7 @@ export class User {
   @Prop({ type: String })
   refreshToken: string;
 
-  @Prop({ type: Object})
+  @Prop({ type: Object })
   company: {
     _id: mongoose.Schema.Types.ObjectId;
     name: string;

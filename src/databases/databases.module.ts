@@ -12,7 +12,7 @@ import { UsersService } from 'src/users/users.service';
 
 @Module({
   controllers: [DatabasesController],
-  providers: [DatabasesService,UsersService],
+  providers: [DatabasesService, UsersService],
   imports: [
     MongooseModule.forFeature([
       { name: User.name, schema: UserSchema },
