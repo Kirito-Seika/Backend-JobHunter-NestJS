@@ -15,7 +15,11 @@ export class Job {
   company: {
     _id: mongoose.Schema.Types.ObjectId;
     name: string;
+    logo: string;
   };
+
+  @Prop({ type: String, required: true })
+  location: string;
 
   @Prop({ type: Number, required: true })
   salary: number;
