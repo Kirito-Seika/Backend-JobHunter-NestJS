@@ -20,6 +20,7 @@ export class CompaniesService {
       name: createCompanyDto.name,
       address: createCompanyDto.address,
       description: createCompanyDto.description,
+      logo: createCompanyDto.logo,
       createdBy: {
         _id: user._id,
         email: user.email,
@@ -60,8 +61,8 @@ export class CompaniesService {
     return `This action returns a #${id} company`;
   }
 
-  async update(id: string, updateCompanyDto: UpdateCompanyDto, user: IUser) {
-    return await this.companyModel.updateOne(
+  update(id: string, updateCompanyDto: UpdateCompanyDto, user: IUser) {
+    return this.companyModel.updateOne(
       { _id: id },
       {
         ...updateCompanyDto,
