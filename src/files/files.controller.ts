@@ -15,15 +15,16 @@ import { FilesService } from 'src/files/files.service';
 import { CreateFileDto } from './dto/create-file.dto';
 import { UpdateFileDto } from 'src/files/dto/update-file.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { ResponseMessage } from 'src/decorator/customize';
+import { Public, ResponseMessage } from 'src/decorator/customize';
 
 @Controller('files')
 export class FilesController {
   constructor(private readonly filesService: FilesService) {}
 
+  @Public()
   @Post('upload')
   @ResponseMessage("Upload Single File")
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('fileUpload'))
   uploadFile(
     @UploadedFile(
       new ParseFilePipeBuilder()
