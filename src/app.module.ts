@@ -10,8 +10,9 @@ import { JobsModule } from 'src/jobs/jobs.module';
 import { FilesModule } from 'src/files/files.module';
 import { ResumesModule } from 'src/resumes/resumes.module';
 import { softDeletePlugin } from 'soft-delete-plugin-mongoose';
-import { PermissionsModule } from './permissions/permissions.module';
-import { RolesModule } from './roles/roles.module';
+import { PermissionsModule } from 'src/permissions/permissions.module';
+import { RolesModule } from 'src/roles/roles.module';
+import { DatabasesModule } from 'src/databases/databases.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { RolesModule } from './roles/roles.module';
     ResumesModule,
     PermissionsModule,
     RolesModule,
+    DatabasesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
