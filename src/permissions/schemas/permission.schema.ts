@@ -5,17 +5,17 @@ export type PermissionDocument = HydratedDocument<Permission>;
 
 @Schema({ timestamps: true })
 export class Permission {
-  @Prop()
+  @Prop({type: String, required: true})
   name: string;
 
-  @Prop()
-  path: string;
+  @Prop({type: String, required: true})
+  apiPath: string;
 
-  @Prop()
+  @Prop({type: String, required: true})
   method: string;
 
-  @Prop()
-  description: string;
+  @Prop({type: String, required: true})
+  module: string;
 
   @Prop({ type: Object })
   createdBy: {
@@ -35,16 +35,16 @@ export class Permission {
     email: string;
   };
 
-  @Prop()
+  @Prop({type: Date})
   createdAt: Date;
 
-  @Prop()
+  @Prop({type: Date})
   updatedAt: Date;
 
-  @Prop()
+  @Prop({type: Boolean})
   isDeleted: boolean;
 
-  @Prop()
+  @Prop({type: Date})
   deletedAt: Date;
 }
 
