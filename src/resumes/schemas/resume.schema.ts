@@ -1,5 +1,7 @@
 import mongoose, { HydratedDocument } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Company } from 'src/companies/schemas/company.schema';
+import { Job } from 'src/jobs/schemas/job.schema';
 
 export type ResumeDocument = HydratedDocument<Resume>;
 
@@ -17,10 +19,18 @@ export class Resume {
   @Prop({ type: String, required: true })
   status: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, required: true })
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: Company.name,
+    required: true,
+  })
   companyId: mongoose.Schema.Types.ObjectId;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, required: true })
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: Job.name,
+    required: true,
+  })
   jobId: mongoose.Schema.Types.ObjectId;
 
   @Prop({ type: mongoose.Schema.Types.Array })
@@ -31,25 +41,25 @@ export class Resume {
       _id: mongoose.Schema.Types.ObjectId;
       email: string;
     };
-  }[]
+  }[];
 
   @Prop({ type: Object })
   createdBy: {
     _id: mongoose.Schema.Types.ObjectId;
     email: string;
-  }
+  };
 
   @Prop({ type: Object })
   updatedBy: {
     _id: mongoose.Schema.Types.ObjectId;
     email: string;
-  }
+  };
 
   @Prop({ type: Object })
   deletedBy: {
     _id: mongoose.Schema.Types.ObjectId;
     email: string;
-  }
+  };
 
   @Prop({ type: Date })
   createdAt: Date;

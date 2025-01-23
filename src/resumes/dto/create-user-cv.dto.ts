@@ -1,15 +1,17 @@
-import { IsMongoId, IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, Validate } from 'class-validator';
 import mongoose from 'mongoose';
+import {
+  IsCompanyIdValidConstraint,
+  IsJobIdValidConstraint,
+} from 'src/resumes/validator/validate.resume';
 
 export class CreateUserCvDto {
-  @IsNotEmpty({ message: 'url không được để trống', })
+  @IsNotEmpty({ message: 'url không được để trống' })
   url: string;
 
-  @IsNotEmpty({ message: 'companyId không được để trống', })
-  @IsMongoId({ message: 'companyId is a mongo id' })
+  @Validate(IsCompanyIdValidConstraint)
   companyId: mongoose.Schema.Types.ObjectId;
 
-  @IsNotEmpty({ message: 'jobId không được để trống', })
-  @IsMongoId({ message: 'jobId is a mongo id' })
+  @Validate(IsJobIdValidConstraint)
   jobId: mongoose.Schema.Types.ObjectId;
 }
