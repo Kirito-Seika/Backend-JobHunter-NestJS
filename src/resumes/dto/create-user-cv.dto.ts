@@ -1,4 +1,4 @@
-import { IsNotEmpty, Validate } from 'class-validator';
+import { IsMongoId, IsNotEmpty, Validate } from 'class-validator';
 import mongoose from 'mongoose';
 import {
   IsCompanyIdValidConstraint,

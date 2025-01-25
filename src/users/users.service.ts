@@ -6,6 +6,8 @@ import { IUser } from 'src//users/types/user.interface';
 import { RegisterUserDto } from 'src/users/dto/register-user.dto';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UpdateUserDto } from 'src/users/dto/update-user.dto';
+import { USER_ROLE } from 'src/databases/sample';
+import { Role, RoleDocument } from 'src/roles/schemas/role.schema';
 import { SoftDeleteModel } from 'soft-delete-plugin-mongoose';
 import { compareSync, genSaltSync, hashSync } from 'bcryptjs';
 import mongoose from 'mongoose';
@@ -16,6 +18,8 @@ export class UsersService {
   constructor(
     @InjectModel(userModal.name)
     private userModel: SoftDeleteModel<UserDocument>,
+    @InjectModel(Role.name)
+    private roleModel: SoftDeleteModel<RoleDocument>,
   ) {}
 
   hashPassword = (password: string) => {
@@ -70,6 +74,7 @@ export class UsersService {
         `Email: ${email} đã tồn tại trên hệ thống. Vui lòng sử dụng email khác.`,
       );
     }
+    const userRole = await this.roleModel.findOne({ name: USER_ROLE });
     const hashPassword = this.hashPassword(password);
     return await this.userModel.create({
       name,
@@ -79,7 +84,7 @@ export class UsersService {
       age,
       gender,
       address,
-      role: 'User',
+      role: userRole?._id,
     });
   }
 
@@ -128,9 +133,10 @@ export class UsersService {
   };
 
   findOneByUsername = (username: string) => {
-    return this.userModel
-      .findOne({ email: username })
-      .populate({ path: 'role', select: { name: 1, permissions: 1 } });
+    return this.userModel.findOne({ email: username }).populate({
+      path: 'role',
+      select: { name: 1 },
+    });
   };
 
   isValidPassword = (password: string, hash: string) => {
@@ -175,6 +181,9 @@ export class UsersService {
   };
 
   findUserByToken = (refreshToken: string) => {
-    return this.userModel.findOne({ refreshToken });
+    return this.userModel.findOne({ refreshToken }).populate({
+      path: 'role',
+      select: { name: 1 },
+    });
   };
 }

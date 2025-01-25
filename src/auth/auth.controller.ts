@@ -12,11 +12,15 @@ import { Public, ResponseMessage, User } from 'src/decorator/customize';
 import { LocalAuthGuard } from 'src/auth/local-auth.guard';
 import { RegisterUserDto } from 'src/users/dto/register-user.dto';
 import { IUser } from 'src/users/types/user.interface';
+import { RolesService } from 'src/roles/roles.service';
 import { Response, Request } from 'express';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private rolesService: RolesService,
+  ) {}
 
   //login
   @Public()
@@ -37,7 +41,9 @@ export class AuthController {
 
   @ResponseMessage('Information User')
   @Get('/account')
-  handleGetAccount(@User() user: IUser) {
+  async handleGetAccount(@User() user: IUser) {
+    const temp = (await this.rolesService.findOne(user.role._id)) as any;
+    user.permissions = temp.permissions;
     return { user };
   }
 
@@ -52,11 +58,11 @@ export class AuthController {
     return this.authService.processNewToken(refreshToken, response);
   }
 
-  @ResponseMessage("Logout User")
+  @ResponseMessage('Logout User')
   @Post('/logout')
   handleLogout(
     @Res({ passthrough: true }) response: Response,
-    @User() user: IUser
+    @User() user: IUser,
   ) {
     return this.authService.logout(response, user);
   }

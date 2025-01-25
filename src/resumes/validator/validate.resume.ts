@@ -78,10 +78,7 @@ export class IsCompanyIdValidConstraint implements ValidatorConstraintInterface 
     if (!value) {
       return false;
     }
-    if (value instanceof mongoose.Types.ObjectId) {
-      return mongoose.Types.ObjectId.isValid(value);
-    }
-    return false;
+    return mongoose.Types.ObjectId.isValid(value);
   }
 
   defaultMessage(args: ValidationArguments) {
@@ -99,10 +96,7 @@ export class IsJobIdValidConstraint implements ValidatorConstraintInterface {
     if (!value) {
       return false;
     }
-    if (value instanceof mongoose.Types.ObjectId) {
-      return mongoose.Types.ObjectId.isValid(value);
-    }
-    return false;
+    return mongoose.Types.ObjectId.isValid(value);
   }
 
   defaultMessage(args: ValidationArguments) {

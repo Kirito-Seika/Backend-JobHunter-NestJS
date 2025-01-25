@@ -5,6 +5,7 @@ import { CreateRoleDto } from 'src/roles/dto/create-role.dto';
 import { UpdateRoleDto } from 'src/roles/dto/update-role.dto';
 import { Role, RoleDocument } from 'src/roles/schemas/role.schema';
 import { IUser } from 'src/users/types/user.interface';
+import { ADMIN_ROLE } from 'src/databases/sample';
 import aqp from 'api-query-params';
 import mongoose from 'mongoose';
 
@@ -100,7 +101,7 @@ export class RolesService {
 
   async remove(id: string, user: IUser) {
     const foundRole = await this.roleModel.findById(id);
-    if (foundRole.name === "ADMIN") {
+    if (foundRole.name === ADMIN_ROLE) {
       throw new BadRequestException("Không thể xóa role ADMIN");
     }
     await this.roleModel.updateOne(

@@ -7,29 +7,27 @@ export type ResumeDocument = HydratedDocument<Resume>;
 
 @Schema({ timestamps: true })
 export class Resume {
-  @Prop({ type: String, required: true })
+  @Prop({ type: String })
   email: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, required: true })
+  @Prop({ type: mongoose.Schema.Types.ObjectId })
   userId: mongoose.Schema.Types.ObjectId;
 
-  @Prop({ type: String, required: true })
+  @Prop({ type: String })
   url: string;
 
-  @Prop({ type: String, required: true })
+  @Prop({ type: String })
   status: string;
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
     ref: Company.name,
-    required: true,
   })
   companyId: mongoose.Schema.Types.ObjectId;
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
-    ref: Job.name,
-    required: true,
+    ref: Job.name
   })
   jobId: mongoose.Schema.Types.ObjectId;
 
