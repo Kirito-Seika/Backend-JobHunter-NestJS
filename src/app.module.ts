@@ -14,6 +14,7 @@ import { PermissionsModule } from 'src/permissions/permissions.module';
 import { RolesModule } from 'src/roles/roles.module';
 import { DatabasesModule } from 'src/databases/databases.module';
 import { SubscribersModule } from 'src/subscribers/subscribers.module';
+import { MailModule } from 'src/mail/mail.module';
 
 @Module({
   imports: [
@@ -41,6 +42,7 @@ import { SubscribersModule } from 'src/subscribers/subscribers.module';
     RolesModule,
     DatabasesModule,
     SubscribersModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],
