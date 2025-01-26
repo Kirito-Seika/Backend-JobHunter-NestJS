@@ -75,9 +75,9 @@ export class SubscribersService {
     });
   }
 
-  update(id: string, updateSubscriberDto: UpdateSubscriberDto, user: IUser) {
+  update(updateSubscriberDto: UpdateSubscriberDto, user: IUser) {
     return this.subscriberModel.updateOne(
-      { _id: id },
+      { email: user.email },
       {
         ...updateSubscriberDto,
         updatedBy: {
@@ -85,6 +85,7 @@ export class SubscribersService {
           email: user.email,
         },
       },
+      { upsert: true },
     );
   }
 
@@ -103,4 +104,10 @@ export class SubscribersService {
       _id: id,
     });
   }
+
+  getSkills(user: IUser) {
+    const { email } = user;
+    return this.subscriberModel.findOne({ email }, { skills: 1 });
+  }
+
 }
