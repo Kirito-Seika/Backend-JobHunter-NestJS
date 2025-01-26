@@ -17,8 +17,8 @@ export class MailController {
     await this.mailerService.sendMail({
       to: 'nekkochan2k@gmail.com',
       from: '"JobHunter" <support@example.com>', // override default from
-      subject: 'Welcome to Nice App! Confirm your Email',
-      html: '<b>welcome bla bla</b>', // HTML body content
+      subject: 'Welcome to JobHunter! Confirm your Email',
+      template: "job"
     });
   }
 }
