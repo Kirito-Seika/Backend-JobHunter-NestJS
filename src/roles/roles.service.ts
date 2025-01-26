@@ -18,10 +18,12 @@ export class RolesService {
 
   async create(createRoleDto: CreateRoleDto, user: IUser) {
     const { name, description, isActive, permissions } = createRoleDto;
+
     const isExist = await this.roleModel.findOne({ name });
     if (isExist) {
       throw new BadRequestException(`Role với name="${name}" đã tồn tại!`);
     }
+
     const newRole = await this.roleModel.create({
       name,
       description,
@@ -32,6 +34,7 @@ export class RolesService {
         email: user.email,
       },
     });
+
     return {
       _id: newRole?._id,
       createdAt: newRole?.createdAt,
@@ -71,7 +74,7 @@ export class RolesService {
     }
     return (await this.roleModel.findById(id)).populate({
       path: 'permissions',
-      select: { _id: 1, apiPath: 1, name: 1, method: 1, module: 1 }
+      select: { _id: 1, apiPath: 1, name: 1, method: 1, module: 1 },
     });
   }
 
@@ -80,10 +83,6 @@ export class RolesService {
       throw new BadRequestException('not found role');
     }
     const { name, description, isActive, permissions } = updateRoleDto;
-    const isExist = await this.roleModel.findOne({ name });
-    if (isExist) {
-      throw new BadRequestException(`Role với name=${name} đã tồn tại!`);
-    }
     return this.roleModel.updateOne(
       { _id },
       {
@@ -102,7 +101,7 @@ export class RolesService {
   async remove(id: string, user: IUser) {
     const foundRole = await this.roleModel.findById(id);
     if (foundRole.name === ADMIN_ROLE) {
-      throw new BadRequestException("Không thể xóa role ADMIN");
+      throw new BadRequestException('Không thể xóa role ADMIN');
     }
     await this.roleModel.updateOne(
       { _id: id },
