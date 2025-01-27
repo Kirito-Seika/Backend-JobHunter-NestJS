@@ -10,11 +10,13 @@ import {
   UploadedFile,
   ParseFilePipeBuilder,
   HttpStatus,
+  UseFilters
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { FilesService } from 'src/files/files.service';
 import { UpdateFileDto } from 'src/files/dto/update-file.dto';
 import { Public, ResponseMessage } from 'src/decorator/customize';
+import { HttpExceptionFilter } from 'src/core/http-exception.filter';
 
 @Controller('files')
 export class FilesController {
@@ -24,6 +26,7 @@ export class FilesController {
   @Post('upload')
   @ResponseMessage("Upload Single File")
   @UseInterceptors(FileInterceptor('fileUpload'))
+  @UseFilters(new HttpExceptionFilter())
   uploadFile(
     @UploadedFile(
       new ParseFilePipeBuilder()
