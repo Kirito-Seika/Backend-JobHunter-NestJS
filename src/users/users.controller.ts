@@ -43,15 +43,15 @@ export class UsersController {
   @Public()
   @Get(':id')
   @ResponseMessage('Fetch User By Id')
-  async findOne(@Param('id') id: string) {
-    return await this.usersService.findOne(id);
+  findOne(@Param('id') id: string) {
+    return this.usersService.findOne(id);
   }
 
   //update user
-  @Patch()
+  @Patch(':id')
   @ResponseMessage('Update User')
-  async update(@Body() updateUserDto: UpdateUserDto, @User() user: IUser) {
-    return await this.usersService.update(updateUserDto, user);
+  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto, @User() user: IUser) {
+    return this.usersService.update(updateUserDto, user, id);
   }
 
   @Delete(':id')

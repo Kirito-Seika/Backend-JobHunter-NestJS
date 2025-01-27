@@ -143,9 +143,12 @@ export class UsersService {
     return compareSync(password, hash);
   };
 
-  update = (updateUserDto: UpdateUserDto, user: IUser) => {
+  update = (updateUserDto: UpdateUserDto, user: IUser, _id: string) => {
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+      throw new BadRequestException(`Not Found User with id = ${_id}`);
+    }
     return this.userModel.updateOne(
-      { _id: updateUserDto._id },
+      { _id: _id },
       {
         ...updateUserDto,
         updatedBy: {
