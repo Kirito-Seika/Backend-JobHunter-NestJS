@@ -21,29 +21,16 @@ export class MailController {
     private jobModel: SoftDeleteModel<JobDocument>,
   ) {}
 
-  @Cron(CronExpression.EVERY_30_SECONDS)
-  testCron() {
-    console.log(">>> call me")
-  }
+  // @Cron(CronExpression.EVERY_30_SECONDS)
+  // testCron() {
+  //   console.log(">>> call me")
+  // }
 
   @Get()
   @Public()
-  @ResponseMessage('Test email')
+  @Cron('0 0 0 * * 0')
+  @ResponseMessage('Send Email')
   async handleTestEmail() {
-    const jobs = [
-      {
-        name: 'Frontend Developer',
-        company: 'Fpt Software',
-        salary: '2500',
-        skills: ['ReactJS', 'HTML', 'CSS', 'JavaScript'],
-      },
-      {
-        name: 'Backend Developer',
-        company: 'Fpt Software',
-        salary: '3000',
-        skills: ['NodeJS', 'NestJS', 'MongoDB'],
-      },
-    ];
     const subscribers = await this.subscriberModel.find({});
     for (const subs of subscribers) {
       const subsSkills = subs.skills;
