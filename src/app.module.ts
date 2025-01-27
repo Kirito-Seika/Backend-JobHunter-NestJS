@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
+import { ThrottlerModule } from '@nestjs/throttler';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from 'src/app.controller';
 import { AppService } from 'src/app.service';
@@ -20,6 +21,10 @@ import { MailModule } from 'src/mail/mail.module';
 @Module({
   imports: [
     ScheduleModule.forRoot(),
+    ThrottlerModule.forRoot([{
+      ttl: 60000,
+      limit: 10,
+    }]),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({

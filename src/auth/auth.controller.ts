@@ -7,6 +7,7 @@ import {
   Res,
   Get,
 } from '@nestjs/common';
+import { ThrottlerGuard, Throttle } from '@nestjs/throttler';
 import { AuthService } from 'src/auth/auth.service';
 import { Public, ResponseMessage, User } from 'src/decorator/customize';
 import { LocalAuthGuard } from 'src/auth/local-auth.guard';
@@ -25,6 +26,8 @@ export class AuthController {
   //login
   @Public()
   @UseGuards(LocalAuthGuard)
+  @UseGuards(ThrottlerGuard)
+  @Throttle({ default: { limit: 5, ttl: 60000 } })
   @Post('/login')
   @ResponseMessage('User Login')
   handleLogin(@Req() req, @Res({ passthrough: true }) response: Response) {
