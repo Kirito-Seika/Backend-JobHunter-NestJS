@@ -17,6 +17,7 @@ import { RolesModule } from 'src/roles/roles.module';
 import { DatabasesModule } from 'src/databases/databases.module';
 import { SubscribersModule } from 'src/subscribers/subscribers.module';
 import { MailModule } from 'src/mail/mail.module';
+import { HealthModule } from 'src/health/health.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { MailModule } from 'src/mail/mail.module';
     DatabasesModule,
     SubscribersModule,
     MailModule,
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
