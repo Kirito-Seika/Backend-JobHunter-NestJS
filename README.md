@@ -1,36 +1,42 @@
-## Backend JobHunter
+# **Job Hunter**
 
-### I. Giới thiệu dự án
-1. Về dự án:
-   - Dự án được lấy cảm hứng từ trang web ITViec, với mục tiêu tạo ra một nền tảng tìm kiếm việc làm hiện đại và dễ sử dụng.
-   - Công nghệ sử dụng: React(TypeScript) + NestJS
-   
-2. Môi trường NodeJS:
-   - Môi trường chạy dự án là NodeJS version 20.14.0
+## **I. Giới Thiệu Dự Án**
 
-3. Tài nguyên:
-   - Download tài nguyên (FE) tại đây: https://drive.google.com/file/d/1zBKbCzTFbjgBGQZd8v5YPHgGAGub0hkm/view?usp=sharing
-   
-4. Cách chạy dự án:
-   - Clone dự án:
-   - Cài đặt thư viện: npm install (npm i).
-   - Update file .env (nếu cần thiết).
-   - Chạy dự án.
+### **1. Tổng Quan**
+🚀 **Job Hunter** là một dự án lấy cảm hứng từ ITViec, nhằm tạo ra một nền tảng hỗ trợ tìm kiếm và ứng tuyển việc làm dễ dàng.
+🔧 **Công nghệ sử dụng**: `NestJS`, `TypeScript`, `MongoDB`...
 
-====================================================================
+### **2. Môi Trường & Công Nghệ**
+🖥️ **Chạy trên nền tảng**: `Node.js v20.14.0`  
+📦 **Quản lý thư viện**: `npm`
 
-### II. Về tác giả
-👋👋 Chào bạn, tôi là Kirito Nguyễn!
+### **3. Tài Nguyên**
+🌐 **Frontend Source**: [Tải xuống tại đây](https://drive.google.com/file/d/1zBKbCzTFbjgBGQZd8v5YPHgGAGub0hkm/view?usp=sharing)
 
-👀 Tôi đam mê lập trình, đặc biệt là trong lĩnh vực phát triển website và ứng dụng di động.
+### **4. Lưu Ý Quan Trọng**
+#### **4.1. Tài khoản test**
+📧 **Username**: `admin@gmail.com`  
+🔑 **Password**: `123456`
 
-🌱 Hiện tại, tôi đang theo học ngành Công nghệ Thông tin và tập trung vào việc phát triển website và ứng dụng di động.
+---
 
-💞️ Tôi luôn mong muốn tìm kiếm cơ hội hợp tác trong các dự án sáng tạo liên quan đến website và ứng dụng di động.
+## **II. Về Tác Giả**
 
-📫 Bạn có thể liên hệ với tôi qua website: https://minhducnguyen.io.vn
+### **👋 Xin Chào! Tôi là Kirito Nguyễn!**
 
-😄 Ngoài lập trình, tôi cũng rất thích ca hát và chơi nhạc cụ – đó là cách tôi thư giãn và sáng tạo!
+💻 **Full-Stack Developer** với niềm đam mê mãnh liệt trong việc xây dựng **website** và **ứng dụng di động**. Tôi không ngừng học hỏi, khám phá công nghệ mới và áp dụng chúng vào các dự án thực tế.
 
-⚡ Sở thích của tôi là viết mã ngắn gọn, dễ hiểu và hiệu quả – tối giản nhưng mạnh mẽ.
+🎓 **Học vấn**: Sinh viên ngành **Công nghệ Thông tin**, luôn tìm kiếm cơ hội để phát triển kỹ năng và sáng tạo những giải pháp hữu ích.
 
+💼 **Mục tiêu**: Tìm kiếm **cơ hội hợp tác** với những dự án đầy thử thách trong lĩnh vực phát triển phần mềm, đặc biệt là các nền tảng **web** và **mobile**.
+
+📫 **Kết nối với tôi qua website cá nhân**: [minhducnguyen.io.vn](https://minhducnguyen.io.vn)
+
+🎶 **Sở thích**: Khi không lập trình, tôi thư giãn bằng cách **ca hát và chơi nhạc cụ**. Âm nhạc giúp tôi giữ tinh thần sáng tạo và tìm kiếm những ý tưởng mới trong công việc.
+
+⚡ **Triết lý lập trình của tôi**:
+> _"Viết code không chỉ để máy hiểu, mà còn để lập trình viên khác dễ dàng đọc và mở rộng."_
+
+---
+
+🔥 **Hãy cùng khám phá và xây dựng những điều tuyệt vời!** 🚀
